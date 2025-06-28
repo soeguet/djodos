@@ -2,3 +2,4 @@ Django
 django-browser-reload
 pydantic
 django-tailwind
+django-htmx

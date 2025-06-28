@@ -10,10 +10,21 @@
     </span>
     <span class="text-xs text-gray-400">{{ todo.created_at }}</span>
     <button
-            class="absolute top-0 right-0 opacity-0 group-hover:opacity-100 transition-opacity text-xs text-red-500 hover:underline"
+            class="bg-blue-500"
             onclick="deleteTodo({{ todo.id }}, this)">
         Delete
     </button>
+
+    <button hx-delete="{% url 'todos:delete_todo' todo.id %}"
+            hx-target="closest li"
+            hx-swap="delete"
+            hx-confirm="Wirklich löschen?"
+            hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+            class="bg-red-500">
+    >
+        Löschen
+    </button>
+
 
 </li>
 

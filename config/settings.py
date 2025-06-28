@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django_browser_reload',
     'tailwind',
     'theme',
+    'django_htmx',
     'todos'
 ]
 
@@ -54,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_browser_reload.middleware.BrowserReloadMiddleware',
+    'django_htmx.middleware.HtmxMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
