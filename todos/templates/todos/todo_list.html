@@ -1,0 +1,9 @@
+<h1>Meine Todos</h1>
+<ul>
+{% for todo in todos %}
+    <li>{{ todo.title }}</li>
+    <li>{{ todo.description }}</li>
+    <li>{{ todo.completed }}</li>
+    <li>{{ todo.created_at }}</li>
+{% endfor %}
+</ul>
