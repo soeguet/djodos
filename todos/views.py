@@ -25,4 +25,4 @@ def delete_todo(request, todo_id: int):
     if delete_count == 0:
         return HttpResponse(f"Todo {todo_id} nicht gefunden", status=404)
 
-    return HttpResponse(f"Todo {todo_id} löschen")
+    return render(request, "todos/response/delete_success.html", {'todo_id': todo_id})

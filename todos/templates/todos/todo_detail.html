@@ -17,11 +17,11 @@
 
     <button hx-delete="{% url 'todos:delete_todo' todo.id %}"
             hx-target="closest li"
-            hx-swap="delete"
+            hx-swap="outerHTML"
             hx-confirm="Wirklich löschen?"
             hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
             class="bg-red-500">
-    >
+        >
         Löschen
     </button>
 
