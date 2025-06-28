@@ -1,6 +1,35 @@
-<ol class="bg-red-500">
-    <li>{{ todo.title}}</li>
-    <li>{{ todo.description }}</li>
-    <li>{{ todo.completed }}</li>
-    <li>{{ todo.created_at }}</li>
-</ol>
+<li class="flex flex-col gap-1 group relative">
+    <span class="text-base font-medium text-gray-900">{{ todo.title }}</span>
+    <span class="text-sm text-gray-500">{{ todo.description }}</span>
+    <span class="text-xs mt-1">
+        {% if todo.completed %}
+            <span class="px-2 py-0.5 rounded bg-green-50 text-green-700">Completed</span>
+        {% else %}
+            <span class="px-2 py-0.5 rounded bg-gray-100 text-gray-500">Open</span>
+        {% endif %}
+    </span>
+    <span class="text-xs text-gray-400">{{ todo.created_at }}</span>
+    <button
+            class="absolute top-0 right-0 opacity-0 group-hover:opacity-100 transition-opacity text-xs text-red-500 hover:underline"
+            onclick="deleteTodo({{ todo.id }}, this)">
+        Delete
+    </button>
+
+</li>
+
+<script>
+    function deleteTodo(todoId, btn) {
+        fetch(`/todos/${todoId}/delete/`, {
+            method: 'DELETE',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}'
+            }
+        }).then(response => {
+            if (response.ok) {
+                btn.closest('li').remove();
+            } else {
+                alert('Delete failed');
+            }
+        });
+    }
+</script>
