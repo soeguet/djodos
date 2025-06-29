@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1 class="text-2xl font-bold text-center my-6">Meine Todos</h1>
+
+    {% include "todos/ui/filter-tabs.html" with current_filter=current_filter %}
+
+    <div
+            hx-get="{% url 'todos:all_todos' %}"
+            hx-swap="innerHTML"
+            hx-trigger="load"
+            class="text-white px-4 py-2 rounded"
+            id="todo-container"
+    >
+        <div class="htmx-indicator">
+            wird geladen...
+        </div>
+    </div>
+
+{% endblock %}

@@ -3,7 +3,7 @@ from .models import Todo
 
 @admin.register(Todo)
 class TodoAdmin(admin.ModelAdmin):
-    list_display = ['title', 'completed', 'created_at']
+    list_display = ['title', 'completed', 'archived', 'created_at']
     list_filter = ['completed', 'created_at']
     search_fields = ['title', 'description']
-    list_editable = ['completed']
+    list_editable = ['completed', 'archived']

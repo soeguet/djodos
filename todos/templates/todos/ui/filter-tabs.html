@@ -1,0 +1,24 @@
+<div id="filter-tabs" class="flex flex-row justify-center">
+
+    <button hx-get="{% url 'todos:all_todos' %}?filter=active"
+            hx-target="#todo-container"
+            hx-trigger="click"
+            class="px-2 py-1 {% if current_filter == 'active' %}bg-gray-200{% endif %}">
+        Aktiv
+    </button>
+
+    <button hx-get="{% url 'todos:all_todos' %}?filter=archived"
+            hx-target="#todo-container"
+            hx-trigger="click"
+            class="px-2 py-1 {% if current_filter == 'archived' %}bg-gray-200{% endif %}">
+        Archiviert
+    </button>
+
+    <button hx-get="{% url 'todos:all_todos' %}?filter=all"
+            hx-target="#todo-container"
+            hx-trigger="click"
+            class="px-2 py-1 {% if current_filter == 'all' %}bg-gray-200{% endif %}">
+        Alle
+    </button>
+
+</div>
